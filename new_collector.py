@@ -1,6 +1,9 @@
 import http.client
 import json
 import urllib
+from kafka import KafkaProducer
+
+producer = KafkaProducer(bootstrap_servers='localhost:1234')
 
 conn = http.client.HTTPSConnection("free-news.p.rapidapi.com")
 
@@ -29,4 +32,7 @@ for query in query_list:
     data = res.read()
 
     response_json = json.loads(data.decode("utf-8"))
+    for news in response_json['article']:
+        producer.send('news', json.dumps(news))
+    
     print(query, "done")
