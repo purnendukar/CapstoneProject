@@ -9,14 +9,17 @@ session = Session()
 
 consumer = KafkaConsumer('news')
 for data in consumer:
-    news = json.loads(data)
-    new_obj = News(
-        title=news.get("title"),
-        date_time=news.get("published_date"),
-        summary=news.get("summary"),
-        topic=news.get("topic"),
-        source=news.get("clean_url")
-    )
-    session.add(new_obj)
-    session.commit()
+    try:
+        news = json.loads(data)
+        new_obj = News(
+            title=news.get("title"),
+            date_time=news.get("published_date"),
+            summary=news.get("summary"),
+            topic=news.get("topic"),
+            source=news.get("clean_url")
+        )
+        session.add(new_obj)
+        session.commit()
+    except Exception as error:
+        print(error)
 
