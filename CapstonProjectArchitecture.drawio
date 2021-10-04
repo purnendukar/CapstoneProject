@@ -1,14 +1,14 @@
-<mxfile host="app.diagrams.net" modified="2021-10-04T14:02:26.520Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36" etag="Pwy6_wOF-fNCyb4J6ELI" version="15.4.1" type="github">
+<mxfile host="app.diagrams.net" modified="2021-10-04T14:09:01.555Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36" etag="lXvliPby9LLep2uuNLB3" version="15.4.1" type="github">
   <diagram id="Y2ruSsz-ofUZzDlT8qKe" name="Page-1">
-    <mxGraphModel dx="546" dy="645" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="946" dy="645" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="RAnUYokOQ0HX44caFUxl-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RAnUYokOQ0HX44caFUxl-1" target="RAnUYokOQ0HX44caFUxl-2">
+        <mxCell id="RAnUYokOQ0HX44caFUxl-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="RAnUYokOQ0HX44caFUxl-1" target="RAnUYokOQ0HX44caFUxl-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="RAnUYokOQ0HX44caFUxl-1" value="Cron Job&lt;br&gt;(News Collector)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="480" y="80" width="120" height="60" as="geometry" />
+          <mxGeometry x="360" y="170" width="160" height="60" as="geometry" />
         </mxCell>
         <mxCell id="RAnUYokOQ0HX44caFUxl-6" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="640" y="160" width="80" height="280" as="geometry" />
@@ -51,11 +51,31 @@
         <mxCell id="RAnUYokOQ0HX44caFUxl-14" value="Data Preprocessing" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1200" y="160" width="160" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="RAnUYokOQ0HX44caFUxl-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1.05;entryY=0.578;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="RAnUYokOQ0HX44caFUxl-25" target="RAnUYokOQ0HX44caFUxl-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="RAnUYokOQ0HX44caFUxl-25" value="Model Building" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1220" y="280" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="RAnUYokOQ0HX44caFUxl-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RAnUYokOQ0HX44caFUxl-10" target="RAnUYokOQ0HX44caFUxl-14">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RAnUYokOQ0HX44caFUxl-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="RAnUYokOQ0HX44caFUxl-29" target="RAnUYokOQ0HX44caFUxl-32">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="480" />
+              <mxPoint x="440" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RAnUYokOQ0HX44caFUxl-29" value="Storage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="320" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="RAnUYokOQ0HX44caFUxl-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="RAnUYokOQ0HX44caFUxl-32" target="RAnUYokOQ0HX44caFUxl-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RAnUYokOQ0HX44caFUxl-32" value="News Predictor Portal" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="320" width="160" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
