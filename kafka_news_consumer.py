@@ -2,7 +2,7 @@ from kafka import KafkaConsumer
 from sqlalchemy.orm import sessionmaker
 import json
 
-from .models import News, engine
+from models import News, engine
 
 Session = sessionmaker(bind = engine)
 session = Session()
@@ -21,5 +21,5 @@ for data in consumer:
         session.add(new_obj)
         session.commit()
     except Exception as error:
-        print(error)
+        session.rollback()
 
