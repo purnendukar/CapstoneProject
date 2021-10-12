@@ -5,7 +5,7 @@
 `apt-get install cron`
 
 ### Install MySQL
-`apt-get install mysql`
+`apt install mysql-server`
 
 ### Create MySQL DB
 `CREATE DATABASE capstone;`
