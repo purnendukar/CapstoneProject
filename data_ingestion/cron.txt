@@ -1,0 +1,2 @@
+0 22 * * * /path/to/new/virtual/environment/bin/python path/to/project/news_collector.py
+

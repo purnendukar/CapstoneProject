@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  data_ingestion:
+    deploy:
+      replicas: 1
+    build: data_ingestion
+    stdin_open: true
+    tty: true
+      
+
