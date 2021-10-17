@@ -7,10 +7,14 @@ from models import News, engine
 Session = sessionmaker(bind = engine)
 session = Session()
 
-consumer = KafkaConsumer('news')
+consumer = KafkaConsumer(
+    'news',
+    bootstrap_servers='kafka:9092'
+)
 for data in consumer:
+    print(data.value.decode())
     try:
-        news = json.loads(data)
+        news = json.loads(data.value.decode())
         new_obj = News(
             title=news.get("title"),
             date_time=news.get("published_date"),
@@ -21,5 +25,6 @@ for data in consumer:
         session.add(new_obj)
         session.commit()
     except Exception as error:
+        print("error", str(error))
         session.rollback()
 

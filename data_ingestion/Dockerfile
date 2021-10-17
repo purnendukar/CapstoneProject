@@ -11,9 +11,6 @@ RUN pip install -r requirements.txt
 COPY . /data_ingestion
 RUN apt-get install -y cron
 
-EXPOSE 5000
-
-
 COPY cron.txt /data_ingestion/cron.txt
 RUN crontab /data_ingestion/cron.txt
 

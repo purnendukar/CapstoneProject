@@ -26,5 +26,10 @@ Cronjob script to run cron job daily at 22:00.
 ### Start Kafka News Consumer
 `python kafka_news_consumer.py`
 
+## Setup Docker
+
+`docker-compose build`
+`docker-compose up`
+
 
 
