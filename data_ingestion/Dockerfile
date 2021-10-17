@@ -16,7 +16,7 @@ EXPOSE 5000
 
 COPY cron.txt /data_ingestion/cron.txt
 RUN crontab /data_ingestion/cron.txt
-# RUN chmod 0644 /etc/cron.d/example-crontab && crontab /etc/cron.d/example-crontab
+
 
 
 

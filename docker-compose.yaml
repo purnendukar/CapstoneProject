@@ -1,11 +1,25 @@
 version: '3'
 
 services:
+
   data_ingestion:
     deploy:
       replicas: 1
     build: data_ingestion
+    links:
+      - db
     stdin_open: true
     tty: true
+    
+  db:
+    image: mysql
+    hostname: news_mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports: 
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: capstone
       
 
