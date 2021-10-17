@@ -1,2 +1,2 @@
-0 22 * * * /path/to/new/virtual/environment/bin/python path/to/project/news_collector.py
+0 22 * * * python /data_ingestion/news_collector.py
 
