@@ -14,6 +14,6 @@ RUN apt-get install -y cron
 COPY cron.txt /data_ingestion/cron.txt
 RUN crontab /data_ingestion/cron.txt
 
-
+ENTRYPOINT [ "python","/data_ingestion/kafka_news_consumer.py" ]  
 
 
