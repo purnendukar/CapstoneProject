@@ -12,7 +12,6 @@ consumer = KafkaConsumer(
     bootstrap_servers='kafka:9092'
 )
 for data in consumer:
-    print(data.value.decode())
     try:
         news = json.loads(data.value.decode())
         new_obj = News(
