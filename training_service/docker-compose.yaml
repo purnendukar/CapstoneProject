@@ -1,0 +1,12 @@
+version: '3'
+networks:
+  app-tier:
+    external: true
+
+services:
+  predictor:
+    build: predictor
+    ports:
+      - "5000:7000"
+    networks:
+      - app-tier
