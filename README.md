@@ -12,16 +12,20 @@ First go to the training service folder
 
 `cd path/to/data_ingestion_service`
 
-`docker-compose build`
-`docker-compose up`
+Now run the following command:
+
+* `docker-compose build`
+* `docker-compose up`
 
 ### Individual Container Spin Up
 
-`docker-compose up zookeeper`
-`docker-compose up kafka`
-`docker-compose up mysqldb`
-`docker-compose up phpmyadmin`
-`docker-compose up data_ingestion`
+Incase any container fails to start.
+
+* `docker-compose up zookeeper`
+* `docker-compose up kafka`
+* `docker-compose up mysqldb`
+* `docker-compose up phpmyadmin`
+* `docker-compose up data_ingestion`
 
 ## Docker Setup Predictor/Training Service
 
@@ -29,11 +33,15 @@ First go to the training service folder
 
 `cd path/to/training_service`
 
-`docker-compose build`
-`docker-compose up`
+Now run the following command:
+
+* `docker-compose build`
+* `docker-compose up`
 
 ### Individual Container Spin Up
 
-`docker-compose up predictor`
+Incase any container fails to start.
+
+* `docker-compose up predictor`
 
 
