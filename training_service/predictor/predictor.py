@@ -78,18 +78,11 @@ def news_classfier():
 
 @app.route("/retrain", methods=["GET"])
 def test_model():
-    # if request.method == "GET":
-    #     return render_template(
-    #         "retrain.html",
-    #     )
-    # elif request.method == "POST":
     if request.method == "GET":
         train_set = select(News)
         sparksession=SparkSession.builder.appName('preprocessor').getOrCreate()
         rdd=sparksession.createDataFrame(train_set)
 
-        #thread = Thread(target=df_send_kafka, args=(test_set,test_id))
-        #thread.start()
         retrain_model(rdd)
 
         return jsonify({
