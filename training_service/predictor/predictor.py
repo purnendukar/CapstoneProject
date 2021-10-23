@@ -77,7 +77,7 @@ def news_classfier():
     )
 
 @app.route("/retrain", methods=["GET"])
-def test_model():
+def retrain_model_api():
     if request.method == "GET":
         train_set = select(News)
         sparksession=SparkSession.builder.appName('preprocessor').getOrCreate()
