@@ -1,0 +1,7 @@
+[{"host": "db",
+    "port": 3306,
+    "user": "root",
+    "password": "root",
+    "database": "capstone",
+    "test_table": "news_data"
+}]
