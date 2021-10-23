@@ -89,4 +89,8 @@ Incase any container fails to start.
 
 * `docker-compose up predictor`
 
+### Retrain Model
+
+`curl --location --request GET 'http://localhost:7000/retrain'`
+
 
