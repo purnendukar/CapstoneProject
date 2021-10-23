@@ -16,7 +16,6 @@ pandas==1.1.5
 parso==0.8.2
 pexpect==4.8.0
 pickleshare==0.7.5
-# pkg-resources==0.0.0
 prompt-toolkit==3.0.20
 protobuf==3.18.1
 ptyprocess==0.7.0
@@ -30,11 +29,12 @@ traitlets==4.3.3
 wcwidth==0.2.5
 xlrd==2.0.1
 sklearn
-# pickle
 nltk
 flask
 bs4==0.0.1
 requests==2.26.0
 kafka_python==2.0.2
 pyspark
+sqlalchemy==1.4.25
+mysqlclient
 

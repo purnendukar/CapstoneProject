@@ -8,11 +8,13 @@ from werkzeug.utils import redirect
 from random import randint
 # from pyhive import hive
 from pyspark.sql import SparkSession
+from sqlalchemy import select
 
 import requests
 from bs4 import BeautifulSoup
 
-from utils import text_preprocessor,predictor,preprocess_rdd
+from utils import text_preprocessor,predictor,retrain_model
+from models import News
 from kafka import KafkaProducer
 
 producer = KafkaProducer(bootstrap_servers='kafka:9092')
@@ -74,24 +76,26 @@ def news_classfier():
         category=prediction
     )
 
-@app.route("/retrain", methods=["GET", "POST"])
+@app.route("/retrain", methods=["GET"])
 def test_model():
+    # if request.method == "GET":
+    #     return render_template(
+    #         "retrain.html",
+    #     )
+    # elif request.method == "POST":
     if request.method == "GET":
-        return render_template(
-            "retrain.html",
-        )
-    elif request.method == "POST":
-        test_set = pd.read_csv(request.files["file"],sep='|')
+        train_set = select(News)
         sparksession=SparkSession.builder.appName('preprocessor').getOrCreate()
-        rdd=sparksession.createDataFrame(test_set)
+        rdd=sparksession.createDataFrame(train_set)
 
         #thread = Thread(target=df_send_kafka, args=(test_set,test_id))
         #thread.start()
-        preprocess_rdd(rdd)
+        retrain_model(rdd)
 
-        return render_template(
-            "retrain.html",result='retraining is complete'
-        )
+        return jsonify({
+            "message": "Retrain Successful"
+        })
+
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1',port=5000,debug=True)
