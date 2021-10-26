@@ -5,7 +5,7 @@ networks:
 
 services:
   predictor:
-    build: predictor
+    build: train_predict
     ports:
       - "7000:7000"
     networks:
