@@ -1,23 +1,14 @@
-version: '3.1'
+version: '3'
+networks:
+  app-tier:
+    external: true
 
 services:
-
-  db:
-    image: mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: capstone
-    ports:
-      - "3307:3306"
-    volumes:
-      - ./dump.sql:/dump.sql
-  
   preprocessor:
     build: preprocessor
     links: 
-      - "db:database"
+      - mysqldb
     volumes:
       - ./data:/app/data
     depends_on: 
-      - db
+      - mysqldb
