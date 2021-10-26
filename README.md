@@ -76,7 +76,7 @@ This is part of Capstone - week 3 Milestone - New Predictor
 
 First go to the training service folder
 
-`cd path/to/training_service`
+`cd path/to/train_predict_service`
 
 Now run the following command:
 
