@@ -33,6 +33,7 @@ def columnmapper(classindex):
     return classmapper.get(int(classindex))
 
 def retrain_model(rdd):
+    print("spark preprocess")
     rdd=rdd.dropna(how='any')
     rdd=rdd.collect()
     corpus=[]
@@ -42,6 +43,7 @@ def retrain_model(rdd):
         #text=row['text']
         corpus.append(text)
         topic.append(row['topic'])
+    print("preprocess")
     updated_corpus=[]
     stemmer=PorterStemmer()
     for row in corpus:
@@ -60,4 +62,5 @@ def retrain_model(rdd):
     trans_y=encoder.transform(topic)
     model.fit(trans_x,trans_y)
     pickle.dump(model,open('./models/multinbmodel.pkl','wb'))
+    print("training complete")
         

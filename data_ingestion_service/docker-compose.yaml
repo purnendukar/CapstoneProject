@@ -67,6 +67,7 @@ services:
       - mysqldb
       - kafka
     stdin_open: true
+    restart: always
     tty: true
     networks:
       - app-tier

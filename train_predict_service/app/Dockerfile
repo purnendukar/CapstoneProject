@@ -1,14 +1,12 @@
-FROM python:3.9.6
+FROM python:3.6.15
 
 WORKDIR /app
 
 ENV PYTHONUNBUFFERED 1
 ENV DISPLAY=:99
 
-RUN apt update
-
 # Install apt dependencies
-#RUN apt update && apt install -y openjdk-11-jdk && export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+RUN apt update && apt install -y openjdk-11-jdk && export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
 
 # Install requirements

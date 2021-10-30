@@ -17,6 +17,19 @@ from utils import text_preprocessor,predictor,retrain_model
 from models import News
 from kafka import KafkaProducer
 
+import mysql.connector as mysql
+
+
+db = mysql.connect(
+    host = "mysqldb",
+    user = "root",
+    passwd = "password",
+    database = "capstone",
+)
+connn = db.cursor()
+
+sparksession=SparkSession.builder.appName('preprocessor').master("spark://spark-master:7077").getOrCreate()
+
 producer = KafkaProducer(bootstrap_servers='kafka:9092')
 
 import os
@@ -24,27 +37,13 @@ path = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask(__name__, template_folder="templates")
 
-"""
-producer = KafkaProducer(
-    bootstrap_servers = app.config["KAFKA_SERVER"],
-    value_serializer = lambda v: json.dumps(v).encode('utf-8')
-)
-"""
+
 @app.route("/")
 def home():
     if request.method == "GET":
         return render_template(
             "index.html",
         )
-
-"""
-def df_send_kafka(df, test_id=None):
-    print('send thread started')
-    for data in json.loads(df.to_json(orient="records")):
-        if test_id:
-            data["test_id"] = test_id
-        producer.send(topic=app.config["TOPIC"], value=data)
-"""
 
 
 @app.route("/news_classify", methods=["POST"])
@@ -73,20 +72,43 @@ def news_classfier():
         prediction=predictor(trans_text)
     return render_template(
         "index.html",
+        url=url,
         category=prediction
     )
 
 @app.route("/retrain", methods=["GET"])
 def retrain_model_api():
     if request.method == "GET":
-        train_set = select(News)
-        sparksession=SparkSession.builder.appName('preprocessor').getOrCreate()
-        rdd=sparksession.createDataFrame(train_set)
+        query='select * from news'
+        connn.execute(query)
+        records = connn.fetchall()
 
+        train_set = {
+            'id': [],
+            'title': [],
+            'createddate': [],
+            'summary': [],
+            'topic': [],
+            'source_url': []
+        }
+
+        for rec in records:
+            train_set["id"].append(rec[0])
+            train_set["title"].append(rec[1])
+            train_set["createddate"].append(str(rec[2]))
+            train_set["summary"].append(rec[3])
+            train_set["topic"].append(rec[4])
+            train_set["source_url"].append(rec[5])
+
+        df = pd.DataFrame(train_set)
+        rdd = sparksession.createDataFrame(df.astype(str))
+
+        # thread = Thread(target=retrain_model, args=(rdd,))
+        # thread.start()
         retrain_model(rdd)
 
         return jsonify({
-            "message": "Retrain Successful"
+            "message": "Model Retraining Started check spark portal for job process.",
         })
 
 

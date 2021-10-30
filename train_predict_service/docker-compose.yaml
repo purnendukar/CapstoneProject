@@ -5,8 +5,38 @@ networks:
 
 services:
   predictor:
-    build: train_predict
+    build: app
     ports:
       - "7000:7000"
     networks:
       - app-tier
+    links:
+      - spark-master
+    depends_on:
+      - spark-worker
+    environment:
+      - PYSPARK_PYTHON=/opt/bitnami/python/bin/python
+      - PYSPARK_DRIVER_PYTHON=python
+  spark-master:
+    hostname: spark-master
+    image: bitnami/spark:latest
+    ports:
+      - "7077:7077" 
+      - "8080:8080" 
+    networks:
+      - app-tier
+    environment:
+      - SPARK_MODE=master
+  spark-worker:
+    hostname: spark-worker
+    image: bitnami/spark:latest
+    ports:
+      - "8081:8081"
+    networks:
+      - app-tier
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=2048m
+    depends_on:
+      - spark-master
