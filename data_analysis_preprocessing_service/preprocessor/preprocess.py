@@ -57,7 +57,7 @@ class Connector:
             'topic':topic,\
             'source_url':urls}
         df=pd.DataFrame(self.data)
-        sparksession=SparkSession.builder.appName('preprocessor').getOrCreate()
+        sparksession=SparkSession.builder.appName('preprocessor').master("spark://spark-master:7077").getOrCreate()
         rdd=sparksession.createDataFrame(df)
         print('data has been converted into rdd')
         return rdd

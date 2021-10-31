@@ -1,4 +1,5 @@
 version: '3'
+
 networks:
   app-tier:
     external: true
@@ -6,10 +7,6 @@ networks:
 services:
   preprocessor:
     build: preprocessor
-    links: 
-      - mysqldb
     volumes:
       - ./data:/app/data
-    depends_on: 
-      - mysqldb
     tty: true
