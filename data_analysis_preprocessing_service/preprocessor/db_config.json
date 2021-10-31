@@ -1,7 +1,7 @@
-[{"host": "db",
-    "port": 3306,
+[{"host": "mysqldb",
+    "port": 3308,
     "user": "root",
     "password": "root",
     "database": "capstone",
-    "test_table": "news_data"
+    "test_table": "news"
 }]

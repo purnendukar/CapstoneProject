@@ -12,3 +12,4 @@ services:
       - ./data:/app/data
     depends_on: 
       - mysqldb
+    tty: true

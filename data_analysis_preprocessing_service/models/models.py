@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, Column, Integer, DateTime, Text, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql.schema import UniqueConstraint
 
-engine = create_engine("mysql://root:password@localhost:3306/capstone", echo = True)
+engine = create_engine("mysql://root:password@mysqldb/capstone", echo = True)
 
 Base = declarative_base()
 

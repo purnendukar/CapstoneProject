@@ -18,7 +18,7 @@ class Connector:
         self.db_user = self.config.get('user')
         self.db_pwd = self.config.get('password')
         self.db_host = self.config.get('host')
-        self.db_port = self.config.get('port')
+        # self.db_port = self.config.get('port')
         self.db_name = self.config.get('database')# specify connection string
         self.db_table=self.config.get('test_table')
         self.db=None
